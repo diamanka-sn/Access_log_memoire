@@ -40,7 +40,7 @@ const SECTIONS = [
     header: 'Besoin d\'aide',
     icon: 'help-circle',
     items: [
-      { label: 'Adresse email', type: 'input', value: 'contact@ads-sn@com' },
+      { label: 'Adresse email', type: 'input', value: 'contact@ads-sn.com' },
       { label: 'Téléphone', type: 'input', value: '77 879 51 72' },
     ],
   },
@@ -104,7 +104,7 @@ export default function Parametres() {
       header: 'Besoin d\'aide',
       icon: 'help-circle',
       items: [
-        { label: 'Adresse email', type: 'input', value: 'contact@ads-sn@com' },
+        { label: 'Adresse email', type: 'input', value: 'contact@ads-sn.com' },
         { label: 'Téléphone', type: 'input', value: '77 879 51 72' },
       ],
     },

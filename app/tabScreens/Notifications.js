@@ -43,7 +43,7 @@ export default function Notifications() {
 
       try {
         const response = await axios.get(`${API_URL_AUTH}/${url}`);
-
+        console.log(response.data)
         setNotif(sortNotifications(response.data))
       } catch (error) {
         console.error("erreur ", error)
@@ -54,6 +54,7 @@ export default function Notifications() {
   useEffect(() => {
     allNotifications()
   }, [])
+
   const getIconName = (type) => {
     switch (type) {
       case 'Entry':
@@ -70,12 +71,12 @@ export default function Notifications() {
         return <FeatherIcon color="#b30000" name="shield-off" size={20} />;
       case 'Espace plein':
         return <FeatherIcon color="#b30000" name="x" size={20} />;
+      case 'Expiration Profil':
+        return <FeatherIcon color="#b30000" name="alert-triangle" size={20} />;
       default:
         return '';
     }
   }
-
-
 
   return (
     <SafeAreaView>
@@ -90,7 +91,7 @@ export default function Notifications() {
                   <View style={styles.cardStats}>
                     <View style={styles.cardStatsItem}>
                       <FeatherIcon color="#636a73" name="calendar" />
-                      <Text style={styles.cardStatsItemText}>{moment(item.at).locale('fr').format('DD-MM-YYYY HH:MM')}</Text>
+                      <Text style={styles.cardStatsItemText}>{item.at !== null ? moment(item.at).locale('fr').format('DD-MM-YYYY HH:MM') : ''}</Text>
                     </View>
                   </View>
                 </View>
@@ -106,7 +107,7 @@ export default function Notifications() {
         <View>
           <Text style={{ fontSize: 18, textAlign: "center", marginTop: 40 }}>Aucune notification disponible.</Text>
         </View>
-        )}
+      )}
 
     </SafeAreaView>
   );

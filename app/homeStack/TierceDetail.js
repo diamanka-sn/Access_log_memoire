@@ -343,14 +343,12 @@ export default function TierceDetail() {
                                 Rue {params.societe?.rue + ', ' + params.societe?.region + ', ' + params.societe?.pays}
                             </Text>
                         </View>
-
                     </View>
                     <View style={styles.headerRow}>
                         <View style={styles.headerStars}>
 
                             <Text style={styles.headerStarsText}>{params.societe?.email}</Text>
                         </View>
-
                         <Text style={styles.headerDistance}>{params.societe?.telephone}</Text>
                     </View>
                     <View style={styles.headerRow}>

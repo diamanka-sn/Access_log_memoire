@@ -60,7 +60,7 @@ export default function LocataireDetail() {
                                 <Text style={styles.infoRatingText}>{params.societe?.telephone}</Text>
                             </View>
                             <View style={styles.infoRating}>
-                                <Text style={styles.infoRatingText}>{societe?.length} Employés &</Text> 
+                                <Text style={styles.infoRatingText}>{societe?.length} Employés &</Text>
                                 <Text style={styles.infoRatingText}>{camion?.length} Camions</Text>
                             </View>
                         </View>
@@ -81,8 +81,6 @@ export default function LocataireDetail() {
                                     <Text>La société n'a pas de camion.</Text>
                                 </View>
                             )}
-
-
                         </View>
                     </ScrollView>
                 </View>

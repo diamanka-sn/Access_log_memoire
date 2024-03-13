@@ -107,18 +107,11 @@ export default function ListRendezVous({ rdv }) {
             })}
             <RBSheet
                 customStyles={{ container: styles.sheet }}
-                height={700}
+                height={650}
                 ref={rdvSheet}>
                 <View style={styles.headerSheet}>
                     <Text style={styles.headerTitleSheet}>Détails Rendez-vous : {selectedRdv.societeDestinataire?.nom}</Text>
                 </View>
-                {/* <View style={styles.body}>
-                    <View style={styles.avatar}>
-                        {codeQR(selectedRdv?.id)}
-                    </View>
-                    <Text>{selectedRdv.societeDestinataire?.nom}</Text>
-
-                </View> */}
                 <DetailRdv rdv={selectedRdv}/>
             </RBSheet>
 

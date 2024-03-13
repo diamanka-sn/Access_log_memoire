@@ -2,13 +2,11 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { StyleSheet, SafeAreaView, View, Text, Dimensions } from 'react-native';
 import FeatherIcon from 'react-native-vector-icons/Feather';
-import { API_URL, API_URL_AUTH } from '../context/AuthContext';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import { API_URL } from '../context/AuthContext';
 import {
-    ProgressChart,
+    ProgressChart
 } from "react-native-chart-kit";
 import { ScrollView } from 'react-native-gesture-handler';
-import ChartComponent from '../chart/ChartComponent';
 import ChartCamion from '../chart/ChartCamion';
 
 export default function FeedAdmin() {
@@ -49,21 +47,11 @@ export default function FeedAdmin() {
         }
     }
 
-    const fetchCamion = async () => {
-        try {
-            const response = await axios.get(`${API_URL}/administration/camion/find-total-camion-by-societe`)
-            console.log(response.data)
-        } catch (error) {
-            console.error("Erreur de recuperation des données.")
-        }
-    }
-
     useEffect(() => {
         const getNombreSociete = async () => {
             const gie = 'Gie'
             const soc = 'Locataire'
             try {
-
                 const [totalLocataire, totalGie] = await Promise.all([
                     axios.get(`${API_URL}/administration/societe/find-totalSociete?statu=${soc}`),
                     axios.get(`${API_URL}/administration/societe/find-totalSociete?statu=${gie}`),
@@ -74,22 +62,18 @@ export default function FeedAdmin() {
                 console.error('Erreur de recuperation des données.')
             }
         };
-
         getNombreSociete();
-
     }, []);
 
     useEffect(() => {
         fetchEmploye()
         fetchEspace();
-        fetchCamion()
     }, []);
 
     return (
         <ScrollView>
             <SafeAreaView style={{ flex: 1, backgroundColor: '#f3f3f3' }}>
                 <View style={styles.container}>
-
                     <View style={styles.stats}>
                         <View style={styles.statsRow}>
                             <View style={styles.statsItem}>
@@ -116,7 +100,7 @@ export default function FeedAdmin() {
                                 <View style={styles.statsItemIcon}>
                                     <FeatherIcon
                                         color="#fff"
-                                        name="activity"
+                                        name="codesandbox"
                                         size={22} />
                                 </View>
                                 <View>
@@ -140,7 +124,7 @@ export default function FeedAdmin() {
                         <View style={styles.statsRow}>
                             <View style={styles.statsItem}>
                                 <View>
-                                    <Text style={styles.statsItemLabel}>Espace occupé</Text>
+                                    <Text style={styles.statsItemLabel}>Espace occupé dans la plateforme</Text>
                                     <ProgressChart
                                         data={[espace]}
                                         width={Dimensions.get('window').width - 16}
@@ -165,7 +149,7 @@ export default function FeedAdmin() {
                         <View style={styles.statsRow}>
                             <View style={styles.statsItem}>
                                 <View>
-                                    <Text style={styles.statsItemLabel}>Camions par société</Text>
+                                    <Text style={styles.statsItemLabel}>Camions par société dans la plateforme</Text>
                                     {cam.length !== 0 ? (<ChartCamion
                                         data={cam} />) : (
                                         <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
