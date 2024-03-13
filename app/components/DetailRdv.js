@@ -45,21 +45,21 @@ export default function DetailRdv({ rdv }) {
                                         <FeatherIcon
                                             color="#ffa700"
                                             name="alert-triangle"
-                                            size={20} />
+                                            size={22} />
                                     )}
 
-                                    {(rdv.activo) && (
+                                    {(rdv.activo && rdv.done) && (
                                         <FeatherIcon
                                             color="green"
                                             name="check-circle"
-                                            size={20} />
+                                            size={22} />
                                     )}
 
                                     {(!currentDate.isBefore(moment(rdv.startedAt)) && !rdv.activo) && (
                                         <FeatherIcon
                                             color="red"
                                             name="x"
-                                            size={20} />
+                                            size={22} />
                                     )}
                                 </Text>
                             </View>
@@ -97,14 +97,6 @@ export default function DetailRdv({ rdv }) {
             </SafeAreaView>
 
             <View style={styles.overlay}>
-                {/* <TouchableOpacity
-                    onPress={() => {
-                        // handle onPress
-                    }}>
-                    <View style={styles.btn}>
-                        <Text style={styles.btnText}>Imprimer</Text>
-                    </View>
-                </TouchableOpacity> */}
                 <TouchableOpacity
                     onPress={() => {
                         // handle onPress

@@ -9,6 +9,7 @@ import {
 } from "react-native-chart-kit";
 import { ScrollView } from 'react-native-gesture-handler';
 import ChartComponent from '../chart/ChartComponent';
+import moment from 'moment';
 export default function Feed() {
   const [employe, setEmploye] = useState(0);
   const [tierce, setTierce] = useState(0);
@@ -17,6 +18,7 @@ export default function Feed() {
   const [rdv, setRdv] = useState(0)
   const [espace, setEspace] = useState(0)
   const [rdvStat, setRdvStat] = useState([])
+  const currentDate = moment();
 
   const fetchEspace = async () => {
     try {
@@ -33,6 +35,7 @@ export default function Feed() {
     try {
       const response = await axios.get(`${API_URL_AUTH}/gestion-interne/rendez-vous/all-rendez-vous`);
       const rdv = await response.data.filter(m => m.societeLocataireId === societe?.id)
+     
       setRdv(rdv.length)
       const transactionsByOrigin = {};
 

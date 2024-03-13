@@ -43,21 +43,21 @@ export default function ListRendezVous({ rdv }) {
                                             <FeatherIcon
                                                 color="#ffa700"
                                                 name="alert-triangle"
-                                                size={20} />
+                                                size={22} />
                                         )}
 
                                         {(item.activo) && (
                                             <FeatherIcon
                                                 color="green"
                                                 name="check-circle"
-                                                size={20} />
+                                                size={22} />
                                         )}
 
                                         {(!currentDate.isBefore(moment(item.startedAt)) && !item.activo) && (
                                             <FeatherIcon
                                                 color="red"
                                                 name="x"
-                                                size={20} />
+                                                size={22} />
                                         )}
                                     </Text>
                                 </View>

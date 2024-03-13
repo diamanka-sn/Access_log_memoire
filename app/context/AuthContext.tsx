@@ -10,8 +10,8 @@ interface AuthProps {
 }
 
 const TOKEN_KEY = "807605274673228623802113__plateforme-access-token"
-export const API_URL = 'http://192.168.1.47:8080/api/v1/access-service'
-export const API_URL_AUTH = 'http://192.168.1.47:8080/api/v1/auth-service'
+export const API_URL = 'http://192.168.1.25:8080/api/v1/access-service'
+export const API_URL_AUTH = 'http://192.168.1.25:8080/api/v1/auth-service'
 const AuthContext = createContext<AuthProps>({});
 
 export const useAuth = () => {

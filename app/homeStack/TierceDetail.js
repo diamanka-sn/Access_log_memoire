@@ -406,7 +406,6 @@ export default function TierceDetail() {
                             <Text style={{ color: 'gray', textAlign: 'center' }}>{'La société n\'a pas de camions. \nVous pouvez ajouter un nouveau camion en utilisant le bouton situé en haut à droite.'}</Text>
                         </View>
                     )}
-
                 </View>
             )}
             

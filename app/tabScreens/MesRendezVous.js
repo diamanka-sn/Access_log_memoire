@@ -2,9 +2,7 @@ import React, { useEffect, useState } from "react";
 import {
   FlatList,
   SafeAreaView,
-  StyleSheet,
-  Text,
-  View,
+  StyleSheet
 } from "react-native";
 import RendezVous from "../components/RendezVous";
 import { API_URL_AUTH } from "../context/AuthContext";
@@ -19,7 +17,6 @@ export default function MesRendezVous() {
 
   const handleRefresh = async () => {
     setRefreshing(true);
-
     try {
       await fetchRdv();
     } catch (error) {
@@ -28,7 +25,6 @@ export default function MesRendezVous() {
       setRefreshing(false);
     }
   };
-
 
   const fetchRdv = async () => {
     try {
@@ -47,11 +43,8 @@ export default function MesRendezVous() {
     }
   };
 
-
-
   useEffect(() => {
     fetchRdv();
-
   }, []);
 
   return (
@@ -62,17 +55,14 @@ export default function MesRendezVous() {
           keyExtractor={(item) => item.id}
           renderItem={({ item }) => <RendezVous rdv={item} />}
           ListHeaderComponentStyle={{ backgroundColor: "#ccc" }}
-          // ItemSeparatorComponent={() => <View style={styles.divider} />}
           refreshing={isRefreshing}
           onRefresh={handleRefresh}
         />
       ) : (
         <Vide message={"Aucun rendez-vous disponible."} />
       )}
-
     </SafeAreaView>
   );
-
 }
 
 
