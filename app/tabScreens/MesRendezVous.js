@@ -33,6 +33,7 @@ export default function MesRendezVous() {
         setSociete(JSON.parse(value));
         const response = await axios.get(`${API_URL_AUTH}/gestion-interne/rendez-vous/all-rendez-vous`);
         const rdv = await response.data.filter(m => m.societeLocataireId === societe?.id)
+
         setRdv(rdv)
       }
     } catch (error) {

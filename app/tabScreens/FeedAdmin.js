@@ -21,6 +21,7 @@ export default function FeedAdmin() {
         try {
             const response = await axios.get(`${API_URL}/administration/societe/find-allSocieteAvecEspace`);
             const e = response.data
+            console.log(e)
             let tempTotalSpace = 0;
             let tempTotalOccupiedSpace = 0;
             for (const es of e) {
@@ -126,7 +127,7 @@ export default function FeedAdmin() {
                                 <View>
                                     <Text style={styles.statsItemLabel}>Espace occupé dans la plateforme</Text>
                                     <ProgressChart
-                                        data={[espace]}
+                                        data={[espace ? espace : 0]}
                                         width={Dimensions.get('window').width - 16}
                                         height={220}
                                         chartConfig={{

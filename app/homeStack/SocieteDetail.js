@@ -559,7 +559,7 @@ export default function Recherche() {
                             <View style={styles.rowResume}>
                                 <Text style={styles.rowField}>Date</Text>
 
-                                <Text style={styles.rowValue}>{moment(resume.date).locale('fr').format('DD-MM-YYYY HH:MM')}</Text>
+                                <Text style={styles.rowValue}>{moment(resume.date).locale('fr').format('DD-MM-YYYY HH:mm')}</Text>
                             </View>
                             <View style={styles.rowResume}>
                                 <Text style={styles.rowField}>Marge</Text>

@@ -45,7 +45,7 @@ export default function RendezVousDetails() {
     const route = useRoute();
     const { params } = route;
     const [rdv, setRdv] = useState(params.rdv)
-    const rdvH = moment(rdv.startedAt).locale('fr').format('DD-MM-YYYY HH:MM')
+    const rdvH = moment(rdv.startedAt).locale('fr').format('DD-MM-YYYY HH:mm')
     const currentDate = moment();
     const rdvDate = moment(rdv.startedAt);
     const stats = [

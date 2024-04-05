@@ -130,11 +130,11 @@ export default function MaSociete() {
                             const a = response.data
                             if (!a.error) {
 
-                                Toast.success(a.message);
                                 setData({
                                     immatriculation: '',
                                     categorie: ''
                                 })
+                                Alert.alert("Succés", a.message)
                                 await getAllCamion()
                             } else {
                                 Alert.alert("Erreur", a.message)
@@ -169,7 +169,7 @@ export default function MaSociete() {
         }
         Alert.alert(
             "Confirmation",
-            "Voulez-vous ajouter " + form.prenom + form.nom + " ?",
+            "Voulez-vous ajouter " + form.prenom +" "+ form.nom + " ?",
             [
                 {
                     text: "Annuler",

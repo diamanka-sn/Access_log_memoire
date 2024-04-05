@@ -76,7 +76,7 @@ export default function RendezVousContent({ rdv }) {
                   size={14} />
 
                 <Text style={styles.cardStatsItemText}>
-                  {moment(rdv.startedAt).locale('fr').format('HH:MM')}
+                  {moment(rdv.startedAt).locale('fr').format('HH:mm')}
                 </Text>
               </View>
             </View>

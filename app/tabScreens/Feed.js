@@ -35,7 +35,7 @@ export default function Feed() {
     try {
       const response = await axios.get(`${API_URL_AUTH}/gestion-interne/rendez-vous/all-rendez-vous`);
       const rdv = await response.data.filter(m => m.societeLocataireId === societe?.id)
-     
+
       setRdv(rdv.length)
       const transactionsByOrigin = {};
 
@@ -153,7 +153,7 @@ export default function Feed() {
                 <View>
                   <Text style={styles.statsItemLabel}>Espace occupé</Text>
                   <ProgressChart
-                    data={[espace]}
+                    data={[espace ? espace : 0]}
                     width={Dimensions.get('window').width - 16}
                     height={220}
                     chartConfig={{
