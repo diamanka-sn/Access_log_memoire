@@ -91,7 +91,7 @@ export default function Notifications() {
                   <View style={styles.cardStats}>
                     <View style={styles.cardStatsItem}>
                       <FeatherIcon color="#636a73" name="calendar" />
-                      <Text style={styles.cardStatsItemText}>{item.at !== null ? moment(item.at).locale('fr').format('DD-MM-YYYY HH:MM') : ''}</Text>
+                      <Text style={styles.cardStatsItemText}>{item.at !== null ? moment(item.at).locale('fr').format('DD-MM-YYYY HH:mm') : ''}</Text>
                     </View>
                   </View>
                 </View>

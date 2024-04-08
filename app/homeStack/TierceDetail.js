@@ -21,6 +21,7 @@ import moment from 'moment';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import { HEURES, formatDateToYYYYMMDDHHMM } from '../context/utils';
 import { Dropdown } from 'react-native-element-dropdown';
+import RendezVous from '../components/RendezVous';
 
 const items = [
     { name: 'Société' },
@@ -63,6 +64,7 @@ export default function TierceDetail() {
             const response = await axios.get(`${API_URL_AUTH}/gestion-interne/rendez-vous/all-rendez-vous`)
             const a = await response.data.filter(m => m.societeOrigne.id === params.societe?.id && m.societeLocataireId === soc.id)
             setRdv(a)
+            console.log(rdv)
         } catch (error) {
             console.error("Erreur", error)
         }
@@ -406,7 +408,7 @@ export default function TierceDetail() {
                     )}
                 </View>
             )}
-            
+
             <RBSheet
                 customStyles={{ container: styles.sheet }}
                 height={320}
