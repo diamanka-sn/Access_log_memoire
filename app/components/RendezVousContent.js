@@ -33,7 +33,27 @@ export default function RendezVousContent({ rdv }) {
                     name="alert-triangle"
                     size={20} />
                 )}
-                {(rdv.activo) && (
+                {(rdv.activo) && (!rdv.done) && (!currentDate.isBefore(rdvDate)) && (
+                  <><FeatherIcon
+                    color="orange"
+                    name="check-circle"
+                    size={20} />
+                    <FeatherIcon
+                      color="red"
+                      name="x"
+                      size={20} /></>
+                )}
+                {(rdv.activo) && (!rdv.done) && (currentDate.isBefore(rdvDate)) && (
+                  <><FeatherIcon
+                    color="orange"
+                    name="check-circle"
+                    size={20} />
+                    <FeatherIcon
+                      color="#ffa700"
+                      name="alert-triangle"
+                      size={20} /></>
+                )}
+                {(rdv.activo) && (rdv.done) && (
                   <FeatherIcon
                     color="green"
                     name="check-circle"

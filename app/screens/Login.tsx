@@ -65,8 +65,8 @@ export default function Login() {
         <View style={styles.header}>
           <Text style={styles.title}>Bienvenue!</Text>
           <View style={{ alignItems: 'center', justifyContent: 'center', }}>
-            <Image 
-            style={{width:120, height:120}}
+            <Image
+              style={{ width: 120, height: 120 }}
               source={require("../../assets/logo1.png")}
             />
           </View>
@@ -107,7 +107,7 @@ export default function Login() {
                 {loading ? (
                   <Text style={styles.btnText}> <ActivityIndicator size={17} color="white" style={{ marginRight: 8 }} /> Connexion</Text>
                 ) : (
-                  <Text style={styles.btnText}>Connexion</Text>
+                  <View><Text style={styles.btnText}>Connexion</Text></View>
                 )}
               </View>
             </TouchableOpacity>

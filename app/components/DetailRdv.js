@@ -48,7 +48,7 @@ export default function DetailRdv({ rdv }) {
                                             size={22} />
                                     )}
 
-                                    {(rdv.activo && rdv.done) && (
+                                    {(rdv.activo) && (
                                         <FeatherIcon
                                             color="green"
                                             name="check-circle"

@@ -3,17 +3,19 @@ import { Text, View, StyleSheet, TouchableOpacity, Alert, ActivityIndicator } fr
 import { Camera } from 'expo-camera';
 import { API_URL_AUTH } from '../context/AuthContext';
 import axios from 'axios';
+import { AsyncStorage } from '@react-native-async-storage/async-storage';
 
 export default function App() {
     const [hasPermission, setHasPermission] = useState(null);
     const [scanned, setScanned] = useState(false);
     const [showScanner, setShowScanner] = useState(true);
     const [loading, setLoading] = useState(false);
-
+    const [role, setRole] = useState(null);
     useEffect(() => {
         (async () => {
             const { status } = await Camera.requestCameraPermissionsAsync();
             setHasPermission(status === 'granted');
+           
         })();
     }, []);
 
@@ -22,9 +24,12 @@ export default function App() {
         setLoading(true);
 
         try {
-            const response = await axios.get(`${API_URL_AUTH}/admin/autorisation/verifier-entry-rv/${data}/1`);
-            const result = response.data;
-            Alert.alert('Résultats', result.message);
+            const role = 'admin'
+                const endpoint = role === "admin" ? "verifier-entry-rv" : "valider-entry-rv";
+                const response = await axios.get(`${API_URL_AUTH}/admin/autorisation/${endpoint}/${data}/1`);
+                const result = response.data;
+                const title = role === "admin" ? 'Résultats' : 'Autorisation';
+                Alert.alert(title, result.message);
         } catch (error) {
             console.error(error);
             Alert.alert('Erreur', 'Une erreur est survenue lors de la vérification.');
@@ -54,10 +59,13 @@ export default function App() {
     return (
         <View style={styles.container}>
             {showScanner && (
-                <Camera
-                    onBarCodeScanned={scanned ? undefined : handleBarCodeScanned}
-                    style={StyleSheet.absoluteFill}
-                />
+                <View style={styles.cameraContainer}>
+                    <Camera
+                        onBarCodeScanned={scanned ? undefined : handleBarCodeScanned}
+                        style={[StyleSheet.absoluteFill, styles.camera]}
+                    />
+                    <View style={styles.cameraFrame} />
+                </View>
             )}
 
             {loading && (
@@ -83,8 +91,20 @@ const styles = StyleSheet.create({
         flexDirection: 'column',
         justifyContent: 'center',
     },
+    cameraContainer: {
+        flex: 1,
+        position: 'relative',
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
     camera: {
         flex: 1,
+    },
+    cameraFrame: {
+        width: '70%', // or any other value you prefer
+        aspectRatio: 1, // makes it a square frame
+        borderColor: '#ffffff',
+        borderWidth: 9,
     },
     text: {
         fontSize: 18,

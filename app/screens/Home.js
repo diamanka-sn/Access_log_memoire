@@ -23,6 +23,7 @@ import FeedAdmin from "../tabScreens/FeedAdmin";
 import SocieteDk from "../tabScreens/SocieteDk";
 import LocataireDetail from "../homeStack/LocataireDetail";
 import Vide from "../empty/Vide";
+import Simulation from "../tabScreens/Simulation";
 
 
 const TopTabs = createMaterialTopTabNavigator()
@@ -185,7 +186,7 @@ function TabGroup({ navigation }) {
             }} />
 
             {isSuper && (
-                <><Tab.Screen name="Sociétés" component={SocieteDk} options={{headerTitle:"Les sociétés locataires"}}/>
+                <><Tab.Screen name="Sociétés" component={SocieteDk} options={{ headerTitle: "Les sociétés locataires" }} />
                     <Tab.Screen name="Paramétres" component={Vide} /></>
             )}
             {isAdmin && (<><Tab.Screen name="Rendez-vous" component={ListeSociete} options={{ headerShown: false }} />

@@ -84,7 +84,7 @@ export default function RendezVousDetails() {
         };
     };
 
-    const mod = (currentDate.isBefore(rdvDate) && rdv?.activo) || (!rdv?.activo && !currentDate.isBefore(rdvDate)) || !rdv.activo
+    const mod = (currentDate.isBefore(rdvDate) && rdv?.activo) || (!rdv?.activo && !currentDate.isBefore(rdvDate)) || !rdv.activo || ((rdv.activo) && (!rdv.done) && (!currentDate.isBefore(rdvDate)))
     useLayoutEffect(() => {
         navigation.setOptions({
             headerTitle: rdv?.societeOrigne.nom,
@@ -249,10 +249,20 @@ export default function RendezVousDetails() {
                                                     <Text style={styles.badgeText}>Attente</Text>
                                                 </View>
                                             )}
-                                            {(rdv?.activo) && (
+                                            {(rdv.activo) && (rdv.done) && (
                                                 <View style={[getBadgeStyles('success')]}>
                                                     <Text style={styles.badgeText}>Valider</Text>
                                                 </View>
+                                            )}
+                                            {(rdv.activo) && (!rdv.done) && (!currentDate.isBefore(rdvDate)) && (
+                                                <><FeatherIcon
+                                                    color="orange"
+                                                    name="check-circle"
+                                                    size={20} />
+                                                    <FeatherIcon
+                                                        color="red"
+                                                        name="x"
+                                                        size={20} /></>
                                             )}
                                             {(!currentDate.isBefore(rdvDate) && !rdv?.activo) && (<View style={[getBadgeStyles('danger')]}>
                                                 <Text style={styles.badgeText}>Expiré</Text>
@@ -308,7 +318,7 @@ export default function RendezVousDetails() {
                                 </View>
                             ))}
                         </View>
-                        {((currentDate.isBefore(rdvDate) && rdv?.activo) || (!rdv?.activo && !currentDate.isBefore(rdvDate)) || !rdv.activo) && (
+                        {((currentDate.isBefore(rdvDate) && rdv?.activo) || (!rdv?.activo && !currentDate.isBefore(rdvDate)) || !rdv.activo || ((rdv.activo) && (!rdv.done) && (!currentDate.isBefore(rdvDate)))) && (
                             <View style={{ marginTop: 10 }}>
                                 <View>
                                     <Text style={{ fontSize: 14, marginBottom: 5, color: '#4285F4', fontWeight: 'bold', }}>Motif du rendez-vous</Text>
@@ -350,36 +360,36 @@ export default function RendezVousDetails() {
                                     </Text>
                                     {Platform.OS === 'ios' ? (
                                         <DateTimePicker
-                                        style={{
-                                            borderRadius: 12,
-                                            fontSize: 15,
-                                        }}
-                                        minimumDate={new Date()}
-                                        minuteInterval={5}
-                                        value={new Date(rdv.startedAt)}
-                                        mode="datetime"
-                                        locale="fr"
-                                        is24Hour={true}
-                                        display="default"
-                                        onChange={handleDateChange}
-                                    />
-                                    ): (
+                                            style={{
+                                                borderRadius: 12,
+                                                fontSize: 15,
+                                            }}
+                                            minimumDate={new Date()}
+                                            minuteInterval={5}
+                                            value={new Date(rdv.startedAt)}
+                                            mode="datetime"
+                                            locale="fr"
+                                            is24Hour={true}
+                                            display="default"
+                                            onChange={handleDateChange}
+                                        />
+                                    ) : (
                                         <DateTimePickerAndroid
-                                        style={{
-                                            borderRadius: 12,
-                                            fontSize: 15,
-                                        }}
-                                        minimumDate={new Date()}
-                                        minuteInterval={5}
-                                        value={new Date(rdv.startedAt)}
-                                        mode="datetime"
-                                        locale="fr"
-                                        is24Hour={true}
-                                        display="default"
-                                        onChange={handleDateChange}
-                                    />
+                                            style={{
+                                                borderRadius: 12,
+                                                fontSize: 15,
+                                            }}
+                                            minimumDate={new Date()}
+                                            minuteInterval={5}
+                                            value={new Date(rdv.startedAt)}
+                                            mode="datetime"
+                                            locale="fr"
+                                            is24Hour={true}
+                                            display="default"
+                                            onChange={handleDateChange}
+                                        />
                                     )}
-                                    
+
                                 </View>
                                 <View
                                     style={{

@@ -220,7 +220,7 @@ export default function Recherche() {
 
                             const a = response.data
                             if (!a.error) {
-                                Alert.alert("Succès", a.message);
+                               // Alert.alert("Succès", a.message);
                                 resetForm()
                                 setResumme(form)
                                 resumeRBSheet.current.open()

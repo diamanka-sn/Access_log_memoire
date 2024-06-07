@@ -28,17 +28,17 @@ export default function MesRendezVous() {
 
   const fetchRdv = async () => {
     try {
+      
+      
       const value = await AsyncStorage.getItem("societe");
       if (value !== null) {
         setSociete(JSON.parse(value));
         const response = await axios.get(`${API_URL_AUTH}/gestion-interne/rendez-vous/all-rendez-vous`);
         const rdv = await response.data.filter(m => m.societeLocataireId === societe?.id)
-
         setRdv(rdv)
       }
     } catch (error) {
       setRdv([])
-      console.error(error);
     } finally {
       setRefreshing(false);
     }

@@ -126,7 +126,6 @@ export default function MaSociete() {
                         setLoading(true);
                         try {
                             const response = await axios.post(`${API_URL}/gestion-interne/camion/add-camion`, d)
-
                             const a = response.data
                             if (!a.error) {
 

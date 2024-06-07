@@ -255,7 +255,7 @@ export default function TierceDetail() {
                             const response = await axios.post(`${API_URL_AUTH}/gestion-interne/rendez-vous/create-rv-camion/${selectedCamion.id}`, data);
                             const a = response.data
                             if (!a.error) {
-                                Alert.alert("Succès", a.message);
+                                // Alert.alert("Succès", a.message);
                                 setForm({
                                     motif: '',
                                     date: new Date()

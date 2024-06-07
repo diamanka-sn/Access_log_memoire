@@ -10,8 +10,8 @@ interface AuthProps {
 }
 
 const TOKEN_KEY = "807605274673228623802113__plateforme-access-token"
-export const API_URL = 'http://192.168.1.16:8080/api/v1/access-service'
-export const API_URL_AUTH = 'http://192.168.1.16:8080/api/v1/auth-service'
+export const API_URL = 'http://192.168.1.36:8080/api/v1/access-service'
+export const API_URL_AUTH = 'http://192.168.1.36:8080/api/v1/auth-service'
 const AuthContext = createContext<AuthProps>({});
 
 export const useAuth = () => {
@@ -53,10 +53,8 @@ export const AuthProvider = ({ children }: any) => {
 
     const login = async (email: string, password: string) => {
         try {
-            console.log("result")
-
             const result = await axios.post(`${API_URL}/auth/signin`, { email: email, password: password })
-            const { userConnect, token, refreshToken } = result.data;
+            const { userConnect, token } = result.data;
 
             await AsyncStorage.setItem('userConnect', JSON.stringify(userConnect));
             await AsyncStorage.setItem('societe', JSON.stringify(userConnect.societe));
